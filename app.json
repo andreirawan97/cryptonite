@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "cryptonite",
+    "name": "Cryptonite",
     "slug": "cryptonite",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.andreirawan97.cryptonite"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4af79e89-36d2-4efb-86e6-855ececda54d"
+      }
     }
   }
 }
