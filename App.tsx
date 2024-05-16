@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useEffect, useRef, useState } from "react";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { TData } from "react-native-wagmi-charts";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config";
+
+import MainNavigator from "./src/routes/MainNavigator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GluestackUIProvider config={config}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StatusBar />
+        <SafeAreaView style={{ flex: 1 }}>
+          <MainNavigator />
+        </SafeAreaView>
+      </GestureHandlerRootView>
+    </GluestackUIProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
