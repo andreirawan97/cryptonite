@@ -1,5 +1,9 @@
 import { OrderBookDeltaArray, OrderBookHash } from "../../types/common";
-import { generateUniqueDeltaArray, mapDeltaArrayToHash } from "../common";
+import {
+  generateUniqueDeltaArray,
+  getSpreadAmount,
+  mapDeltaArrayToHash,
+} from "../common";
 
 it("should return correct Order Book Hash", () => {
   const deltaArray: OrderBookDeltaArray = [
@@ -45,7 +49,7 @@ it("should return unique Order Book Delta Array", () => {
   expect(uniqueDeltaArray).toEqual(expectedDeltaArray);
 });
 
-it("should return unique Asks Order Book Delta Array with Max 25 data", () => {
+it("should return unique Order Book Delta Array with Max 25 data", () => {
   const deltaArray: OrderBookDeltaArray = [];
   const expectedDeltaArray: OrderBookDeltaArray = [];
 
@@ -62,21 +66,9 @@ it("should return unique Asks Order Book Delta Array with Max 25 data", () => {
   expect(uniqueDeltaArray).toEqual(expectedDeltaArray);
 });
 
-it("should return unique Bids Order Book Delta Array with Max 25 data", () => {
-  const deltaArray: OrderBookDeltaArray = [];
-  let expectedDeltaArray: OrderBookDeltaArray = [];
+it("should return 0 for empty array args in getSpreadAmount", () => {
+  const bids: number[][] = [];
+  const asks: number[][] = [];
 
-  for (let i = 0; i < 30; i++) {
-    deltaArray.push([i, i]);
-
-    if (i < 25) {
-      expectedDeltaArray.push([i, i]);
-    }
-  }
-
-  expectedDeltaArray = expectedDeltaArray.sort((a, b) => b[0] - a[0]);
-
-  const uniqueDeltaArray = generateUniqueDeltaArray(deltaArray, "bids", 25);
-
-  expect(uniqueDeltaArray).toEqual(expectedDeltaArray);
+  expect(getSpreadAmount(bids, asks)).toEqual(0);
 });

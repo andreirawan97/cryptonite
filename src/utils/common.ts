@@ -8,7 +8,7 @@ export function roundNumber(num: number): number {
 }
 
 export function getSpreadAmount(bids: number[][], asks: number[][]): number {
-  if (!bids || !asks) {
+  if (!bids.length || !asks.length) {
     return 0;
   }
 
